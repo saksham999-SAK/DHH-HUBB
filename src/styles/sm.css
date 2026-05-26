@@ -1,0 +1,295 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#000;
+}
+
+/* HERO SECTION */
+.artist-hero{
+  position:relative;
+  height:95vh;
+  width:100%;
+  background-image:url(/seedhe-maut---photoshoot-2023---shot-by-kyabc-63-1.jpg);
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:flex-end;
+}
+
+/* DARK OVERLAY */
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.9)
+  );
+}
+
+/* CONTENT */
+.artist-content{
+  position:relative;
+  padding:60px;
+  color:white;
+}
+
+/* VERIFIED */
+.verified{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.check{
+  background:#1db954;
+  color:black;
+  font-size:14px;
+  padding:4px 6px;
+  border-radius:50%;
+  font-weight:bold;
+}
+
+/* ARTIST NAME */
+.artist-content h1{
+  font-size:120px;
+  font-weight:900;
+  line-height:1;
+}
+
+/* LISTENERS */
+.artist-content p{
+  font-size:20px;
+  opacity:0.9;
+  margin-top:15px;
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#0f0f0f;
+  color:#fff;
+}
+
+/* LIST */
+.track-list{
+  width:100%;
+  margin:0px auto;
+  background-image: url(/bg.png);
+}
+
+/* ROW */
+.track{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 10px;
+  border-radius:6px;
+  transition:background 0.3s;
+}
+
+.track:hover{
+  background:#1a1a1a;
+}
+
+/* LEFT */
+.left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  width:50%;
+}
+
+.index{
+  width:25px;
+  color:#b3b3b3;
+}
+
+.left img{
+  width:278px;
+  height:208px;
+  border-radius:4px;
+  object-fit:cover;
+}
+
+/* TITLE */
+.title{
+  display:flex;
+  flex-direction:column;
+}
+
+.title h4{
+  font-size:46px;
+  font-weight:500;
+}
+
+/* EXPLICIT */
+.explicit{
+  background:#b3b3b3;
+  color:#000;
+  font-size:11px;
+  width:16px;
+  text-align:center;
+  border-radius:3px;
+  margin-top:4px;
+}
+
+/* STREAMS */
+.streams{
+  width:25%;
+  text-align:right;
+  color:#b3b3b3;
+}
+
+/* DURATION */
+.duration{
+  width:8%;
+  text-align:right;
+  color:#b3b3b3;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* PAGE */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #0b0b0b;
+  color: #eaeaea;
+  padding-bottom: 110px; /* space for player */
+}
+.non{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+/* CONTENT DEMO */
+.hero, .content {
+  padding: 80px;
+}
+
+/* MUSIC SECTION */
+.music-section {
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  background: linear-gradient(180deg, #121212, #0d0d0d);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  border-radius: 50px;
+}
+
+/* CONTAINER */
+.music-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* SONG INFO */
+.song-details {
+  flex: 1;
+}
+
+.song-details h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.song-details span {
+  font-size: 12px;
+  color: #9a9a9a;
+  letter-spacing: 0.4px;
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.controls button {
+  background: transparent;
+  border: none;
+  color: #cfcfcf;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.controls button:hover {
+  color: #1db954;
+  transform: scale(1.1);
+}
+
+/* PLAY BUTTON HIGHLIGHT */
+#play {
+  font-size: 26px;
+  color: #ffffff;
+}
+
+/* PROGRESS BAR */
+#progress {
+  flex: 2;
+  height: 4px;
+  appearance: none;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* PROGRESS BAR THUMB */
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+#progress::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+/* FIREFOX */
+#progress::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border-radius: 50%;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .music-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  #progress {
+    width: 100%;
+  }
+}
