@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WRAPPED</title>
+    <link rel="stylesheet" href="./wrap.css">
+</head>
+<body>
+    </section>
+
+ <div class="grid">
+  <section class="wrapped">
+
+
+    <div class="text-container scroll-item">
+      <img height="370vh"  width="800px"   src="./2025.jpeg" alt="">
+      <h1>WRAPPED FOR </h1>
+      <H2>SAKSHAM BOLDHAN</H2>
+      
+    </div>
+    
+  </section>
+</div>
+ <div class="grid">
+  <section class="wrapped">
+
+
+    <div class="text-container scroll-item">
+      <h1>YOU LISTENED </h1>
+      <H2>WE COUNTED</H2>
+      <div class="counter" data-target="19999">0</div>
+    </div>
+    <video style="border-radius:30px;" src="./yash.mp4" autoplay muted loop playsinline preload="auto"></video>
+  </section>
+</div>
+  <div class="grid">
+  <section class="wrapped">
+    <video style="border-radius:30px;" src="./king.mp4" autoplay muted loop playsinline preload="auto"></video>
+
+    <div class="text-container scroll-item">
+      <h1>Your Listening Age.</h1>
+      <div class="counter" data-target="21">0</div>
+    </div>
+  </section>
+</div>
+
+<DIV class="con">
+    <h1>TOP ALBUM</h1>
+    <div class="conn">
+
+        <section class="cardd">
+    
+    <div class="car imageReveal  ">
+      <img src="./AA1.jpeg" alt="image">
+      <p>P-POP </p>
+    </div>
+
+    <div class="car imageReveal">
+      <img src="./AA2.jpeg" alt="image">
+      <p>LUNCH BREAK</p>
+    </div>
+
+    <div class="car imageReveal">
+      <img src="./AA3.jpeg" alt="image">
+      <p>SHAKTI KSHAMA</p>
+    </div>
+
+    <div class="car imageReveal">
+      <img src="./AA4.jpeg " alt="image">
+      <p>WALK ON WATER</p>
+    </div>
+
+  </section>
+
+    </div>
+
+
+</DIV>
+
+<DIV class="con">
+    <h1>TOP SONG</h1>
+    <div class="conn">
+
+        <section class="cardd">
+    
+    <div class="car autoShow  ">
+      <img src="./b1.jpeg" alt="image">
+      <p>BOYFRIEND </p>
+    </div>
+
+    <div class="car autoShow">
+      <img src="./b2.jpeg" alt="image">
+      <p>BANDA KAAM KA </p>
+    </div>
+
+    <div class="car autoShow">
+      <img src="./b3.jpeg" alt="image">
+      <p>RED</p>
+    </div>
+
+    <div class="car autoShow">
+      <img src="./b5.jpeg " alt="image">
+      <p>BILLO RANI</p>
+    </div>
+
+  </section>
+
+    </div>
+
+
+</DIV>
+
+<DIV class="con">
+    <h1>CRY AARA H</h1>
+    <div class="conn">
+
+        <section class="cardd">
+    
+    <div class="carr parallax  ">
+      <img src="./s1.jpeg" alt="image">
+      <p>UNTIL I FOUND LOVE </p>
+
+
+    <div class="carr parallax">
+      <img src="./S2.jpeg" alt="image">
+      <p>LOVER</p>
+    </div>
+
+    <div class="carr parallax">
+      <img src="./S8.jpeg" alt="image">
+      <p>BACK TO FRIEND</p>
+    </div>
+
+    <div class="carr parallax">
+      <img src="./S5.jpeg " alt="image">
+      <p>NIGHT CHANGES</p>
+    </div>
+
+  </section>
+
+    </div>
+
+
+</DIV>
+
+
+
+  
+  <div class="con">
+     <h1 class="textt">YOUR TOP ARTIST</h1>
+    <img class="oh fadeUp" src="./final s.png" alt="">
+   <img class="oh fadeUp" src="./final k.png" alt="">
+    <img class="oh fadeUp" src="./f k .png" alt="">
+  
+  </div>
+
+
+
+
+   
+
+
+
+<section class="wrapped">
+   <div class="text-container scroll-item pad" >
+    <h1>But the BEST singer is</h1>
+   <video style="width: 90%; height:60vh; ;"  src="./v5.mp4" autoplay muted loop playsinline preload="auto"></video>
+   </div>
+</section>
+
+<div class="con">
+     <h1 class="textt">THE GOAT THE GOAT</h1>
+     <img class="oh fadeUp" src="./v1.jpg" alt="">
+   <img class="oh fadeUp" src="./v2.jpg" alt="">
+   <img class="oh fadeUp" src="./v3.jpg" alt="">
+   <img class="oh fadeUp" src="./v5.jpg" alt="">
+     <img class="oh fadeUp" src="./v7.jpg" alt="">
+  
+  </div>
+
+
+
+
+
+
+
+<script>
+const items = document.querySelectorAll(".scroll-item");
+
+function handleScroll(){
+  const windowHeight = window.innerHeight;
+
+  items.forEach(item=>{
+    const rect = item.getBoundingClientRect();
+
+    /* ELEMENT IN VIEW */
+    if(rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3){
+      item.classList.add("active");
+      item.classList.remove("exit");
+    }
+    /* ELEMENT PASSED */
+    else if(rect.top <= windowHeight * 0.3){
+      item.classList.remove("active");
+      item.classList.add("exit");
+    }
+    /* RESET */
+    else{
+      item.classList.remove("active","exit");
+    }
+  });
+}
+
+/* COUNT UP */
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+  let started=false;
+
+  function count(){
+    const rect = counter.getBoundingClientRect();
+    if(rect.top < window.innerHeight && !started){
+      started=true;
+      let current=0;
+      const target=+counter.dataset.target;
+      const step=Math.ceil(target/100);
+
+      const interval=setInterval(()=>{
+        current+=step;
+        if(current>=target){
+          current=target;
+          clearInterval(interval);
+        }
+        counter.textContent=current.toLocaleString();
+      },25);
+    }
+  }
+
+  window.addEventListener("scroll",count);
+});
+
+/* INIT */
+window.addEventListener("scroll",handleScroll);
+handleScroll();
+</script>
+
+</body>
+</html>

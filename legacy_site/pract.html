@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Video Preloader</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide scroll during preloader */
+    font-family: Arial, sans-serif;
+  }
+
+  /* Preloader container */
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  /* Video style */
+  #preloader video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Main content */
+  #main-content {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+
+  #main-content.visible {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- Preloader Video -->
+<div id="preloader">
+  <video id="introVideo" autoplay muted playsinline>
+    <source src="./arp.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
+
+<!-- Main Website Content -->
+<div id="main-content">
+  <header style="padding:50px; text-align:center;">
+    <h1>Welcome to My Website</h1>
+    <p>Here is the main content after the intro video!</p>
+  </header>
+  <section style="padding:50px; text-align:center;">
+    <p>Scroll down or interact with your content as usual.</p>
+  </section>
+</div>
+
+<script>
+  const preloader = document.getElementById('preloader');
+  const mainContent = document.getElementById('main-content');
+  const video = document.getElementById('introVideo');
+
+  // When video ends
+  video.addEventListener('ended', () => {
+    // Fade out preloader
+    preloader.style.opacity = '0';
+
+    // Wait for fade transition to finish
+    setTimeout(() => {
+      preloader.style.display = 'none';
+      // Show main content
+      mainContent.classList.add('visible');
+      // Allow scrolling
+      document.body.style.overflow = 'auto';
+    }, 1000); // Match with CSS transition duration
+  });
+
+  // Optional: Skip video on click
+  preloader.addEventListener('click', () => {
+    video.pause();
+    video.currentTime = video.duration; // Trigger ended event
+  });
+</script>
+
+</body>
+</html>

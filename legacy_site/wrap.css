@@ -1,0 +1,372 @@
+*{
+    margin: 0;
+    padding: 0;
+   
+    box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+body{
+    background-color: rgb(6, 3, 0);
+        
+font-family: Arial, sans-serif;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 25px 40px;
+  background-color: #1e1e1e;
+  background-image: url(./main.jpg);
+}
+
+
+@keyframes fadeUp {
+    from{
+        opacity:0;
+        transform: translateY(10px) scale(0.5);
+
+    }
+    to{
+          opacity:1;
+        transform: translateY(0) scale(1);
+    }
+}
+.logo {
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+.links li a {
+ 
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s ease;
+  font-style:initial
+}
+
+.links li a:hover {
+  color: #16d358; 
+  
+}
+.imgg{
+    background-image: url(./main.jpg);
+    height: 770px;
+    font-size: 100px;
+align-content: center;
+  padding-right: 60px; 
+   z-index:3;
+     height: 100vh;              /* full screen height */
+  display: flex;
+  justify-content: flex-end;  /* move text to right */
+  align-items: center;        /* center vertically */
+  padding-right: 60px;  
+     
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+.con{
+    min-height: 88vh;
+    background-color: black;
+    color: white;
+   font-family: 'Vare sla Round', sans-serif;
+   margin: 10px auto;
+
+   border-radius: 50px;
+   padding: 44px;
+   background-image: url('./bg.png');
+    width:99%;
+}
+
+.textt{
+ 
+   color: rgb(18, 234, 119);
+   font-weight: 800;
+   z-index:8;
+  font-size: 90px;
+  padding-left: 300PX;
+  margin-left: 0%;
+  text-shadow: #121212;
+}
+
+
+.playlist-section {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  overflow-x: auto;
+}
+
+
+
+
+.playlist-card {
+  width: 320px;
+  background: #181818;
+  padding: 15px;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+
+.playlist-card:hover {
+  background: #282828;
+}
+
+
+.media {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+.media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.play-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 65px;
+  height: 65px;
+  background: #1db954;
+  color: black;
+  font-size: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pad{
+  padding: 90px;
+  align-items: center;
+}
+.playlist-card:hover .play-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.playlist-card h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+
+.playlist-card p {
+  font-size: 13px;
+  color: #b3b3b3;
+}
+
+
+
+.grid{
+  display: flex;
+}
+.wrapped{
+  height:100vh;
+  width:100%;
+  display:flex;
+
+  background-image: url(./bg.png);
+}
+
+
+.text-container{
+  padding:80px;
+  width:100%;
+}
+
+.scroll-item{
+  opacity:0;
+  transform:translateX(-200px) scale(0.9);
+  transition:all 1s ease;
+}
+
+
+.scroll-item.active{
+  opacity:1;
+  transform:translateX(0) scale(1);
+}
+
+
+.scroll-item.exit{
+  opacity:0;
+  transform:translateX(200px) scale(0.9);
+
+}
+.fadeUp{
+    animation: fadeUp both;
+    animation-timeline: view();
+
+}
+
+@keyframes fadeUp {
+    from{
+        opacity:0;
+        transform: translateY(10px) scale(0.5);
+
+    }
+    to{
+          opacity:1;
+        transform: translateY(0) scale(1);
+    }
+}
+.imageReveal {
+    animation:imageReveal both;
+    animation-timeline: view(50% 50%)   
+
+}
+@keyframes imageReveal {
+    from{
+        filter:saturate(0) contrast(4) brightness(.1) blur(5px);
+        opacity:0;
+        scale: .95;
+        translate: 0 4rem;
+
+    }
+    to {
+            filter:none;
+        opacity:1;
+        scale: 1;
+        translate: 0 0;
+
+    }
+    
+}
+.autoShow{
+    animation: text-appear both;
+    animation-timeline: view();
+    animation-range: entry 40% cover;
+
+}
+@keyframes text-appear {
+    from{
+       opacity: 0;
+       transform: translateY(100px); 
+
+    }
+    to{
+            opacity: 1;
+       transform: translateY(0px); 
+    }
+}
+.parallax {
+  animation-name: parallax;
+  animation-fill-mode: both;
+  animation-timeline: view(0% 60%);
+}
+
+@keyframes parallax {
+  from {
+    transform: translateY(10rem);
+  }
+  to {
+    transform: translateY(-10rem);
+  }
+}
+
+.carr {
+  width: 390px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;  
+  color: #000;   /* image on top, text below */
+}
+.cardd {
+  display: flex;              /* REQUIRED */
+  gap: 20px;
+  padding: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.car {
+  width: 290px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;     /* image on top, text below */
+}
+
+/* Image */
+.car img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+/* Text */
+.car p {
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+}
+h1{
+  font-size:90px;
+  font-weight:900;
+  color:#ff2d55;
+}
+h2{
+  font-size:120px;
+  color:white;
+}
+h3{
+  font-size:70px;
+  color:#1db954;
+}
+h4{
+  font-size:200px;
+  color:#1db954;
+}
+h5{
+  font-size:200px;
+  color:#ecf7f0;
+}
+h6{
+  font-size:100px;
+  color:#af1952;
+}
+.counter{
+  font-size:130px;
+  font-weight:900;
+  color:#1db954;
+}
+
+#run{
+  height: 50vh;
+  width: 50%;
+}
+
+.oh{
+  height: 30vh;
+  width: 100%;
+
+}
