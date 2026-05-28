@@ -1,34 +1,46 @@
 import { createContext, useContext, useState, useRef, useEffect } from 'react';
 import { songsData } from '../data/mockData';
+
 const AudioContext = createContext();
 
 export const useAudio = () => useContext(AudioContext);
 
 export function AudioProvider({ children }) {
-  const [queue, setQueue] = useState([{
-    id: songsData[0].id,
-    title: songsData[0].title,
-    url: songsData[0].url
-  }]);
+  // FIX: Pass the entire songsData array so the queue isn't stuck at 1 song
+  const [queue, setQueue] = useState(songsData || []);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const currentSong = queue[currentIndex];
-
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0); 
+  
   const audioRef = useRef(null);
+  const currentSong = queue[currentIndex];
 
+  // Effect 1: Fires automatically when the track changes
   useEffect(() => {
-    if (!audioRef.current) return;
-    
+    if (!audioRef.current || !currentSong) return;
+
+    setProgress(0);
+    audioRef.current.load(); // Forces HTML5 player to load the new URL source
+
     if (isPlaying) {
-      audioRef.current.play().catch(e => console.error("Playback failed", e));
+      audioRef.current.play().catch(e => console.error("Playback failed on track change", e));
+    }
+  }, [currentSong]); 
+
+  // Effect 2: Fires when you hit play/pause
+  useEffect(() => {
+    if (!audioRef.current || !currentSong) return;
+
+    if (isPlaying) {
+      audioRef.current.play().catch(e => console.error("Playback failed on toggle", e));
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying, currentSong]);
+  }, [isPlaying]); 
 
   const togglePlay = () => {
-    setIsPlaying(!isPlaying);
+    setIsPlaying(prev => !prev);
   };
 
   const playSong = (songObj, newQueue = null) => {
@@ -47,59 +59,66 @@ export function AudioProvider({ children }) {
     }
     
     setIsPlaying(true);
-    setTimeout(() => {
-      if (audioRef.current) {
-        audioRef.current.play().catch(e => console.log(e));
-      }
-    }, 50);
   };
 
   const handleNext = () => {
     if (currentIndex < queue.length - 1) {
       setCurrentIndex(prev => prev + 1);
-      setIsPlaying(true);
+    } else {
+      setCurrentIndex(0); // Optional: Loops back to the first song
     }
+    setIsPlaying(true);
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
-      setIsPlaying(true);
+    } else {
+      setCurrentIndex(queue.length - 1); // Optional: Loops back to the last song
     }
+    setIsPlaying(true);
   };
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
-      const p = (audioRef.current.currentTime / fileDuration()) * 100;
-      setProgress(p || 0);
+      setProgress(audioRef.current.currentTime);
     }
   };
 
-  const fileDuration = () => audioRef.current?.duration || 1;
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  };
 
   const handleSeek = (val) => {
     if (audioRef.current) {
-      audioRef.current.currentTime = (val * fileDuration()) / 100;
+      audioRef.current.currentTime = val;
       setProgress(val);
     }
   };
 
   return (
     <AudioContext.Provider value={{
-      currentSong, isPlaying, playSong, togglePlay, progress, handleSeek, handleNext, handlePrev, queue, currentIndex
+      currentSong, 
+      isPlaying, 
+      playSong, 
+      togglePlay, 
+      progress, 
+      duration, 
+      handleSeek, 
+      handleNext, 
+      handlePrev, 
+      queue, 
+      currentIndex
     }}>
       {children}
       <audio 
         ref={audioRef} 
-        src={currentSong ? currentSong.url : undefined} 
+        src={currentSong?.url} 
         onTimeUpdate={handleTimeUpdate}
-        onEnded={() => {
-          if (currentIndex < queue.length - 1) {
-            handleNext();
-          } else {
-            setIsPlaying(false);
-          }
-        }}
+        onLoadedMetadata={handleLoadedMetadata}
+        onEnded={handleNext} // Seamlessly triggers next song when one finishes
       ></audio>
     </AudioContext.Provider>
   );
